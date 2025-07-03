@@ -1,0 +1,29 @@
+@page "/toggle-theme"
+
+@inject ThemeService ThemeService
+
+<button @onclick="ToggleTheme" class="toggle-theme__button">
+    @if (isDarkTheme)
+    {
+        <span>Switch to Light Theme</span>
+    }
+    else
+    {
+        <span>Switch to Dark Theme</span>
+    }
+</button>
+
+@code {
+    private bool isDarkTheme;
+
+    protected override async Task OnInitializedAsync()
+    {
+        isDarkTheme = await ThemeService.IsDarkThemeAsync();
+    }
+
+    private async Task ToggleTheme()
+    {
+        isDarkTheme = !isDarkTheme;
+        await ThemeService.ToggleThemeAsync(isDarkTheme);
+    }
+}

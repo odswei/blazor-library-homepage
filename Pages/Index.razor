@@ -1,0 +1,26 @@
+@page "/"
+
+@inject ThemeService ThemeService
+
+<MainLayout>
+    <div class="library-homepage">
+        <header class="library-homepage__header">
+            <h1 class="library-homepage__title">Library Homepage</h1>
+            <ToggleTheme />
+        </header>
+        <main class="library-homepage__main">
+            @if (LayoutOption == "A")
+            {
+                <IndexA />
+            }
+            else
+            {
+                <IndexB />
+            }
+        </main>
+    </div>
+</MainLayout>
+
+@code {
+    private string LayoutOption = "A"; // Change this to "B" for Layout B
+}

@@ -1,0 +1,23 @@
+@inherits LayoutComponentBase
+
+@inject ThemeService ThemeService
+
+<div class="main-layout">
+    <header>
+        <h1>Library Homepage</h1>
+        <ToggleTheme />
+    </header>
+    <main>
+        @Body
+    </main>
+    <footer>
+        <p>&copy; 2023 Library Homepage</p>
+    </footer>
+</div>
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        await ThemeService.InitializeAsync();
+    }
+}
